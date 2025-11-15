@@ -1,0 +1,67 @@
+% arXiv LaTeX Template
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{times}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{url}
+
+\title{How Does a Reasoning Model Perform Its Goal Formation:\\ Impact of Input Prompt and System Message on Final Output}
+
+\author{Fahad Ali \\ Independent Researcher}
+
+\date{25-Nov-2025}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Large language models often reveal internal structure when their reasoning traces are exposed. This work investigates how a model forms implicit ``goals'' during reasoning, and how prompt clarity or ambiguity influences these goals. Using multiple prompt variations of a single legal case (Taylor~Swift v.~Evermore Park, 2021), an experiment was conducted on GPT-OSS to identify patterns in meta-level planning and reasoning. When given a complete factual description, the model aligned its goal formation with the true causal chain. However, under partial or ambiguous prompts, the model reconstructed missing causal elements, producing outputs that deviated from ground truth while still following consistent internal patterns. These results suggest that the model adapts its internal goal state depending on prompt ambiguity, revealing stable but distinct reasoning regimes. This exploratory study raises a central research question: what patterns of goal formation remain stable across contexts, and how does ambiguity shift the model's internal planning dynamics?
+\end{abstract}
+
+\section{Introduction}
+Large language models (LLMs) generate structured reasoning when prompted with chain-of-thought or when their internal reasoning traces are exposed. One emerging line of inquiry concerns how these models implicitly form ``goals''---the internal representation of what the model believes it must accomplish---and how these goals shift depending on prompt information.
+
+This work explores how variations in prompt clarity alter the model's internal planning and reasoning structure.
+
+\section{Methodology}
+A single legal case, the 2021 dispute between Evermore Park and Taylor Swift, was used as a controlled environment. Four prompts were tested:
+\begin{enumerate}
+    \item A full factual description containing explicit event--outcome relationships.
+    \item A minimal prompt requesting identification of cause--effect relationships.
+    \item A prompt requesting an explanation of the case.
+    \item A prompt requesting a summarization of the judgment.
+\end{enumerate}
+
+The model's internal reasoning traces were examined, focusing on two components:
+
+\textbf{Meta-planning}: where the model identifies the task or goal.
+
+\textbf{Meta-reasoning}: where the model develops steps toward execution.
+
+\section{Findings}
+With the fully detailed prompt, the model reproduced accurate causal structure. Under the three sparse prompts, the model synthesized missing details, guided by patterns in its training distribution. Despite incomplete information, the model exhibited internally consistent but different reasoning trajectories.
+
+Measured goal correctness approximated values of 0.5, 0.5, and 0.3 for the ambiguous prompts, reflecting partial alignment with ground truth.
+
+One significant observation: while prompts (1) and (2) reproduced reasoning traces consistent with system-level guidance, prompt (3) diverged, indicating the model shifts its internal behavior when faced with higher ambiguity.
+
+\section{Discussion}
+This experiment shows that LLMs do not simply retrieve information but construct internal task goals dynamically. When ambiguity increases, the model's internal goal may reform, leading to different reasoning structures even when answering the same underlying question.
+
+This suggests the presence of implicit goal-formation regimes conditioned on prompt clarity.
+
+\section{Conclusion}
+The study leads to a broader research direction: identifying which internal patterns of reasoning and goal formation persist across contexts. Understanding these dynamics may inform alignment, interpretability, and robustness of LLMs under varying information regimes.
+
+\bibliographystyle{plainnat}
+\begin{thebibliography}{9}
+\bibitem{ref1} Anthropic. ``Constitutional AI.'' 2025.
+\bibitem{ref2} OpenAI. ``Process Supervision.'' 2025.
+\end{thebibliography}
+
+\end{document}
